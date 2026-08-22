@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // One-off Node scripts (PDF asset extraction), not part of the app.
+    "scripts/**",
   ]),
 ]);
 
