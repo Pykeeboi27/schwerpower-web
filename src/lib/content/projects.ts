@@ -1,23 +1,33 @@
+export type FeaturedProject = {
+  name: string;
+  /** Per-project override — only Transportation & Infrastructure needs this;
+   *  every other sector shares one Sector.productsSupplied list instead. */
+  productsSupplied?: string[];
+};
+
 export type Sector = {
   slug: string;
   name: string;
   tagline: string;
-  featuredProjects: string[];
-  productsSupplied: string[];
+  featuredProjects: FeaturedProject[];
+  /** Sector-wide list. Omit when featured projects carry their own instead. */
+  productsSupplied?: string[];
   image?: string;
+  /** Thumbnail strip shown alongside the hero image. */
+  gallery?: string[];
 };
 
 export const sectors: Sector[] = [
   {
-    slug: "healthcare",
-    name: "Healthcare Facilities",
-    tagline: "Reliable electrical systems for mission-critical healthcare facilities.",
+    slug: "industrial",
+    name: "Industrial Facilities",
+    tagline: "Reliable power distribution for manufacturing plants and heavy industries.",
     featuredProjects: [
-      "Julius Quiambao Medical Center",
-      "Jose B. Lingad COVID ISO Building",
-      "San Lazaro Hospital",
-      "Jose Reyes Memorial Medical Center",
-      "Tondo Medical Center",
+      { name: "URC Sonedco" },
+      { name: "URC La Carlota" },
+      { name: "URC Passi" },
+      { name: "Eagle Cement" },
+      { name: "Various Feedmill Projects" },
     ],
     productsSupplied: [
       "Low Voltage Switchgears",
@@ -27,13 +37,84 @@ export const sectors: Sector[] = [
       "Control Panel",
       "Retrofitting Works",
     ],
-    image: "/projects/hospital-sanlazaro.webp",
+    image: "/projects/industrial-hero.webp",
+    gallery: [
+      "/projects/industrial-cement-01.webp",
+      "/projects/industrial-cement-02.webp",
+      "/projects/industrial-cement-03.webp",
+      "/projects/industrial-cement-04.webp",
+      "/projects/feedmill-aerial.webp",
+    ],
+  },
+  {
+    slug: "transportation-infrastructure",
+    name: "Transportation & Infrastructure",
+    tagline: "Powering transportation systems with dependable electrical solutions.",
+    featuredProjects: [
+      {
+        name: "LRT-1 Extension Project",
+        productsSupplied: ["Automatic Transfer Switch (ATS)", "Fire Pump Panel", "Power Distribution Panels"],
+      },
+      {
+        name: "Valenzuela Pumping Stations",
+        productsSupplied: ["Low Voltage Switchgear", "MCB", "Transformer", "Cable Tray"],
+      },
+    ],
+    image: "/projects/infrastructure-transit.webp",
+  },
+  {
+    slug: "solar-renewable",
+    name: "Solar & Renewable Energy",
+    tagline: "Clean energy infrastructure backed by dependable power distribution.",
+    featuredProjects: [
+      { name: "MSpectrum — Various Solar Projects" },
+      { name: "BECIS — Various Solar Projects" },
+      { name: "VGreen — Various Charging Stations" },
+    ],
+    productsSupplied: [
+      "Automatic Transfer Switch (ATS)",
+      "Low Voltage Switchgears",
+      "Combiner Boxes",
+      "Cable Ladders",
+      "Enclosed Circuit Breakers",
+      "Retrofitting Works",
+    ],
+    image: "/projects/solar-02.webp",
+    gallery: ["/projects/solar-01.webp", "/projects/solar-03.webp", "/projects/solar-ev-charging.webp"],
+  },
+  {
+    slug: "healthcare",
+    name: "Healthcare Facilities",
+    tagline: "Reliable electrical systems for mission-critical healthcare facilities.",
+    featuredProjects: [
+      { name: "Julius Quiambao Medical Center" },
+      { name: "Jose B. Lingad COVID ISO Building" },
+      { name: "San Lazaro Hospital" },
+      { name: "Jose Reyes Memorial Medical Center" },
+      { name: "Tondo Medical Center" },
+    ],
+    productsSupplied: [
+      "Low Voltage Switchgears",
+      "Motor Control Centers",
+      "Panelboards",
+      "Cable Ladder",
+      "Control Panel",
+      "Retrofitting Works",
+    ],
+    image: "/projects/hospital-02.webp",
+    gallery: [
+      "/projects/hospital-01.webp",
+      "/projects/hospital-03.webp",
+      "/projects/hospital-sanlazaro.webp",
+      "/projects/hospital-tondo.webp",
+      "/projects/hospital-emergency.webp",
+    ],
   },
   {
     slug: "data-centers",
     name: "Data Centers",
     tagline: "Mission-critical power infrastructure requiring maximum reliability.",
-    featuredProjects: ["ePLDT Clark", "ePLDT Cebu", "ePLDT Pasig"],
+    featuredProjects: [{ name: "ePLDT Clark" }, { name: "ePLDT Cebu" }, { name: "ePLDT Pasig" }],
     productsSupplied: [
       "Low Voltage Switchgears",
       "Synchronizing Panel",
@@ -43,12 +124,22 @@ export const sectors: Sector[] = [
       "Enclosed Circuit Breaker",
     ],
     image: "/projects/datacenter-racks.webp",
+    gallery: [
+      "/projects/epldt-vitro-pasig.webp",
+      "/projects/vitro-pasig-night.webp",
+      "/projects/datacenter-vitro-building.webp",
+    ],
   },
   {
     slug: "mixed-use",
     name: "Mixed-Use Developments",
     tagline: "Reliable electrical power distribution for modern high-rise living.",
-    featuredProjects: ["WeeComm Centre", "Grand Mesa Residences", "Jacinta Enclaves", "Baron Luxe"],
+    featuredProjects: [
+      { name: "WeeComm Centre" },
+      { name: "Grand Mesa Residences" },
+      { name: "Jacinta Enclaves" },
+      { name: "Baron Luxe" },
+    ],
     productsSupplied: [
       "Busduct",
       "Low Voltage Switchgears",
@@ -56,28 +147,13 @@ export const sectors: Sector[] = [
       "Unit Panels",
       "Enclosed Circuit Breakers",
     ],
-    image: "/projects/mixeduse-01.webp",
-  },
-  {
-    slug: "industrial",
-    name: "Industrial Facilities",
-    tagline: "Reliable power distribution for manufacturing plants and heavy industries.",
-    featuredProjects: [
-      "URC Sonedco",
-      "URC La Carlota",
-      "URC Passi",
-      "Eagle Cement",
-      "Various Feedmill Projects",
+    image: "/projects/mixeduse-02.webp",
+    gallery: [
+      "/projects/mixeduse-03.webp",
+      "/projects/mixeduse-04.webp",
+      "/projects/mixeduse-05.webp",
+      "/projects/mixeduse-06.webp",
     ],
-    productsSupplied: [
-      "Low Voltage Switchgears",
-      "Motor Control Centers",
-      "Panelboards",
-      "Cable Ladder",
-      "Control Panel",
-      "Retrofitting Works",
-    ],
-    image: "/projects/industrial-cement-01.webp",
   },
 ];
 
@@ -90,6 +166,7 @@ export type CaseStudy = {
   location: string;
   status: string;
   image: string;
+  gallery?: string[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -103,6 +180,7 @@ export const caseStudies: CaseStudy[] = [
     location: "Makati, Philippines",
     status: "Successfully Delivered",
     image: "/projects/yuchengco-centre.webp",
+    gallery: ["/projects/yuchengco-install-01.webp", "/projects/yuchengco-install-02.webp"],
   },
   {
     slug: "boracay-central",
@@ -118,6 +196,7 @@ export const caseStudies: CaseStudy[] = [
     projectType: "Commercial",
     location: "Boracay, Philippines",
     status: "Successfully Delivered",
-    image: "/projects/installed-switchgear-01.webp",
+    image: "/projects/boracay-central.webp",
+    gallery: ["/projects/boracay-detail-01.webp"],
   },
 ];
