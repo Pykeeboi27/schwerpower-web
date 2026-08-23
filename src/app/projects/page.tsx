@@ -5,13 +5,21 @@ import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/eyebrow";
 import { CtaBand } from "@/components/cta-band";
+import { ProjectGallery } from "@/components/project-gallery";
 import { sectors, caseStudies } from "@/lib/content/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Electrical distribution solutions delivered by Schwer Power Manufacturing Corporation across commercial, industrial, healthcare, and data center projects nationwide.",
+    "Electrical distribution solutions delivered by Schwer Power Manufacturing Corporation across industrial, transportation, solar, healthcare, data center, and mixed-use projects nationwide.",
 };
+
+const badges = [
+  { title: "Quality", subtitle: "Engineered" },
+  { title: "Reliable", subtitle: "Solutions" },
+  { title: "Built for", subtitle: "Performance" },
+  { title: "Trusted by", subtitle: "Industry Leaders" },
+];
 
 export default function ProjectsPage() {
   return (
@@ -22,59 +30,21 @@ export default function ProjectsPage() {
           title="Delivered across every sector"
           lede="SPMC has successfully delivered electrical distribution solutions across commercial, industrial, healthcare, infrastructure, and data center projects nationwide."
         />
+        <Reveal delay={100}>
+          <div className="mt-12 grid grid-cols-2 gap-6 border-t border-ash pt-10 sm:grid-cols-4">
+            {badges.map((badge) => (
+              <div key={badge.title} className="border-t-2 border-brand pt-3">
+                <p className="font-heading text-sm font-semibold tracking-tight text-foreground uppercase">
+                  {badge.title}
+                </p>
+                <p className="text-sm text-muted-foreground uppercase">{badge.subtitle}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
-      {sectors.map((sector, i) => (
-        <section
-          key={sector.slug}
-          className={i % 2 === 1 ? "border-t border-ash bg-surface py-20" : "border-t border-ash py-20"}
-        >
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <Reveal>
-              <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
-                  <SectionHeading eyebrow={sector.name} title={sector.tagline} />
-                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
-                    <div>
-                      <span className="text-xs font-semibold tracking-[0.05em] text-muted-foreground uppercase">
-                        Featured Projects
-                      </span>
-                      <ul className="mt-3 space-y-1.5 text-sm">
-                        {sector.featuredProjects.map((p) => (
-                          <li key={p}>{p}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold tracking-[0.05em] text-muted-foreground uppercase">
-                        Products Supplied
-                      </span>
-                      <ul className="mt-3 space-y-1.5 text-sm">
-                        {sector.productsSupplied.map((p) => (
-                          <li key={p}>{p}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                {sector.image ? (
-                  <div className={`relative aspect-[4/3] ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <Image
-                      src={sector.image}
-                      alt={sector.name}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="rounded-[var(--radius-image)] object-cover"
-                    />
-                  </div>
-                ) : null}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      ))}
-
-      <section className="py-24">
+      <section className="border-t border-ash py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
             <SectionHeading eyebrow="Case Studies" title="A closer look" align="center" className="mx-auto" />
@@ -93,7 +63,9 @@ export default function ProjectsPage() {
                     />
                   </div>
                   <div className="p-6">
-                    <Eyebrow>{project.projectType} · {project.location}</Eyebrow>
+                    <Eyebrow>
+                      {project.projectType} · {project.location}
+                    </Eyebrow>
                     <h3 className="font-heading mt-2 text-2xl font-semibold tracking-tight">
                       {project.name}
                     </h3>
@@ -120,6 +92,73 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+
+      {sectors.map((sector, i) => (
+        <section
+          key={sector.slug}
+          className={i % 2 === 1 ? "border-t border-ash bg-surface py-20" : "border-t border-ash py-20"}
+        >
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <Reveal>
+              <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                  <SectionHeading eyebrow={sector.name} title={sector.tagline} />
+
+                  {sector.productsSupplied ? (
+                    <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                      <div>
+                        <span className="text-xs font-semibold tracking-[0.05em] text-muted-foreground uppercase">
+                          Featured Projects
+                        </span>
+                        <ul className="mt-3 space-y-1.5 text-sm">
+                          {sector.featuredProjects.map((p) => (
+                            <li key={p.name}>{p.name}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold tracking-[0.05em] text-muted-foreground uppercase">
+                          Products Supplied
+                        </span>
+                        <ul className="mt-3 space-y-1.5 text-sm">
+                          {sector.productsSupplied.map((p) => (
+                            <li key={p}>{p}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-8 space-y-6">
+                      {sector.featuredProjects.map((project) => (
+                        <div key={project.name}>
+                          <p className="text-sm font-semibold text-foreground">{project.name}</p>
+                          {project.productsSupplied ? (
+                            <ul className="mt-2 flex flex-wrap gap-1.5">
+                              {project.productsSupplied.map((p) => (
+                                <li
+                                  key={p}
+                                  className="rounded-full bg-surface px-2.5 py-1 text-xs font-medium text-foreground/70"
+                                >
+                                  {p}
+                                </li>
+                              ))}
+                            </ul>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {sector.image ? (
+                  <div className={i % 2 === 1 ? "lg:order-1" : ""}>
+                    <ProjectGallery hero={sector.image} gallery={sector.gallery} alt={sector.name} />
+                  </div>
+                ) : null}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      ))}
 
       <CtaBand />
     </>

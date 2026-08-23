@@ -3,10 +3,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { TeamCard } from "@/components/team-card";
 import { ContactForm } from "@/components/contact-form";
 import { company } from "@/lib/content/company";
-import { team } from "@/lib/content/team";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -59,21 +57,6 @@ export default function ContactPage() {
                   <ContactForm />
                 </div>
               </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-t border-ash bg-surface py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <Reveal>
-            <SectionHeading eyebrow="Our Team" title="Talk to the right person" align="center" className="mx-auto" />
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {team.map((member) => (
-                <TeamCard key={member.email} member={member} />
-              ))}
             </div>
           </Reveal>
         </div>

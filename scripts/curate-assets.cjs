@@ -67,11 +67,14 @@ const KEEP = [
   ["p12-03-302x227-9ebebfd51e5e.webp", "products/switchgear-05-small.webp"],
 
   // Projects
-  ["p10-01-2400x1600-124510975912.webp", "projects/commercial-building-exterior.webp"],
-  ["p11-01-1536x1024-e95ab65da273.webp", "projects/installed-switchgear-01.webp"],
+  ["p10-01-2400x1600-124510975912.webp", "projects/commercial-building-exterior.webp"], // unused (stock decor, not project-specific)
+  ["p11-01-1536x1024-e95ab65da273.webp", "projects/installed-switchgear-01.webp"], // unused (generic switchgear stock, not Boracay)
   ["p12-01-2044x1188-a4ff90e3db38.webp", "projects/yuchengco-centre.webp"],
   ["p12-07-755x566-fc0f3bbaff98.webp", "projects/yuchengco-install-01.webp"],
   ["p12-08-790x572-26d3d441fa6b.webp", "projects/yuchengco-install-02.webp"],
+  ["p13-01-1600x2000-a03c24c4acbd.webp", "projects/boracay-central.webp"], // real Boracay Central hero (was missing)
+  ["p13-08-1024x768-d3c8a9ca6838.webp", "projects/boracay-detail-01.webp"],
+  ["p14-01-2671x2255-bc4beabd517a.webp", "projects/industrial-hero.webp"],
   ["p14-08-474x234-032b061b518c.webp", "projects/industrial-cement-01.webp"],
   ["p14-09-896x504-1bc7fc9eb499.webp", "projects/industrial-cement-02.webp"],
   ["p14-11-474x266-8a26a9ca280f.webp", "projects/industrial-cement-03.webp"],
@@ -81,6 +84,7 @@ const KEEP = [
   ["p16-01-330x219-13ffe29331fa.webp", "projects/solar-01.webp"],
   ["p16-06-1644x1096-53f593055e41.webp", "projects/solar-02.webp"],
   ["p16-07-1644x1096-ad503654fa64.webp", "projects/solar-03.webp"],
+  ["p16-08-1650x1158-e36a7a7be4a1.webp", "projects/solar-ev-charging.webp"], // VGreen charging stations
   ["p17-01-547x365-2db4046c8e6a.webp", "projects/hospital-emergency.webp"],
   ["p17-03-820x615-60e90b68a229.webp", "projects/hospital-01.webp"],
   ["p17-04-672x504-b301eaec4b32.webp", "projects/hospital-02.webp"],
@@ -88,7 +92,7 @@ const KEEP = [
   ["p17-06-642x475-ce09338c0970.webp", "projects/hospital-03.webp"],
   ["p17-07-800x450-df6142ab7077.webp", "projects/hospital-tondo.webp"],
   ["p18-01-2100x1050-139ac2dd2944.webp", "projects/datacenter-racks.webp"],
-  ["p18-04-615x820-638fd3c9ea73.webp", "projects/mixeduse-01.webp"],
+  ["p18-04-615x820-638fd3c9ea73.webp", "projects/datacenter-vitro-building.webp"], // was misfiled as mixeduse-01
   ["p18-05-474x355-b179ec7b8c06.webp", "projects/epldt-vitro-pasig.webp"],
   ["p18-06-640x640-cd36682cd1ef.webp", "projects/vitro-pasig-night.webp"],
   ["p19-01-1200x800-b6d59bcd3638.webp", "projects/mixeduse-02.webp"],

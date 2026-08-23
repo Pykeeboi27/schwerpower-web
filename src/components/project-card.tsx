@@ -24,10 +24,10 @@ export function ProjectCard({ sector }: { sector: Sector }) {
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {sector.featuredProjects.slice(0, 3).map((project) => (
             <li
-              key={project}
+              key={project.name}
               className="rounded-full bg-surface px-2.5 py-1 text-xs font-medium text-foreground/70"
             >
-              {project}
+              {project.name}
             </li>
           ))}
           {sector.featuredProjects.length > 3 ? (
