@@ -74,6 +74,7 @@ export const products: Product[] = [
   {
     name: "Preventive Maintenance",
     description: "Scheduled inspection and testing programs that prevent downtime.",
+    image: "/products/preventive-maintenance.webp",
   },
   {
     name: "Motor Control Center",
