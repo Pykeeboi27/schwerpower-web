@@ -29,6 +29,7 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6 sm:py-32">
           <SectionHeading
             on="dark"
+            as="h1"
             eyebrow="About Us"
             title="Your trusted, dependable fabrication partner"
             lede={company.about}

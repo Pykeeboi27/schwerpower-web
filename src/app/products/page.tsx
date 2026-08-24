@@ -17,6 +17,7 @@ export default function ProductsPage() {
     <>
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionHeading
+          as="h1"
           eyebrow="Our Product Lines"
           title="Everything you need for reliable power distribution"
           lede="A one-stop production process from initial conceptualization to final finished products."

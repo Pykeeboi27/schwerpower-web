@@ -7,6 +7,7 @@ export function SectionHeading({
   lede,
   on = "light",
   align = "left",
+  as: Tag = "h2",
   className,
 }: {
   eyebrow?: string;
@@ -14,6 +15,12 @@ export function SectionHeading({
   lede?: React.ReactNode;
   on?: "light" | "dark";
   align?: "left" | "center";
+  /**
+   * Heading level. Defaults to `h2` for in-page sections; page heroes pass
+   * `h1` so every route has exactly one top-level heading for search engines.
+   * Purely semantic — the visual size is unchanged either way.
+   */
+  as?: "h1" | "h2";
   className?: string;
 }) {
   return (
@@ -23,14 +30,14 @@ export function SectionHeading({
           {eyebrow}
         </Eyebrow>
       ) : null}
-      <h2
+      <Tag
         className={cn(
           "font-heading text-4xl leading-[0.95] font-medium tracking-[-0.01em] text-balance sm:text-5xl",
           on === "dark" ? "text-white" : "text-foreground"
         )}
       >
         {title}
-      </h2>
+      </Tag>
       {lede ? (
         <p
           className={cn(

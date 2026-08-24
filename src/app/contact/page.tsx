@@ -17,6 +17,7 @@ export default function ContactPage() {
     <>
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionHeading
+          as="h1"
           eyebrow="Contact Us"
           title="Let's power your next project"
           lede="Have a question or a project in mind? Send us a message and our team will get back to you."

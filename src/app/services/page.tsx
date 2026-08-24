@@ -29,6 +29,7 @@ export default function ServicesPage() {
     <>
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionHeading
+          as="h1"
           eyebrow="Our Services"
           title="Built around your project"
           lede="From custom fabrication to retrofits and ongoing maintenance, our engineers design solutions to your specific needs."

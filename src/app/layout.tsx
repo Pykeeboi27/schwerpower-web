@@ -4,7 +4,8 @@ import "./globals.css";
 import { display, body } from "./fonts";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { defaultOpenGraph, siteUrl } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
+import { defaultOpenGraph, organizationJsonLd, siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -37,6 +38,7 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
+        <JsonLd data={organizationJsonLd} />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

@@ -26,6 +26,7 @@ export default function ProjectsPage() {
     <>
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
         <SectionHeading
+          as="h1"
           eyebrow="Our Projects"
           title="Delivered across every sector"
           lede="SPMC has successfully delivered electrical distribution solutions across commercial, industrial, healthcare, infrastructure, and data center projects nationwide."
