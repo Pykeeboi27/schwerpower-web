@@ -36,7 +36,11 @@ export function Reveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      // A ratio-based threshold never fires for blocks taller than the
+      // viewport (e.g. the single-column product grid on mobile), so trigger
+      // on any intersection and use a bottom inset for the same "scrolled
+      // into view" feel instead.
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
     );
     observer.observe(node);
     return () => observer.disconnect();
